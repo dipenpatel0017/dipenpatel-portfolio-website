@@ -41,7 +41,7 @@ export function ExperienceSection() {
   ]
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-indigo-950/5 to-transparent">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.div
@@ -49,14 +49,17 @@ export function ExperienceSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           ref={ref}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold font-serif mb-4">
+          <h2 className="text-6xl font-bold font-serif mb-6">
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
               Professional Experience
             </span>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full" />
+          <p className="text-gray-400 max-w-2xl mx-auto mb-8">Transforming ideas into scalable solutions through real-world experience in healthcare technology and modern web development</p>
+          <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 mx-auto rounded-full" style={{
+            boxShadow: '0 0 20px rgba(79, 70, 229, 0.6)',
+          }} />
         </motion.div>
 
         {/* Timeline */}
@@ -85,8 +88,8 @@ export function ExperienceSection() {
                 {index % 2 === 0 ? (
                   <>
                     <motion.div
-                      whileHover={{ x: -10 }}
-                      className="glass p-8 rounded-xl hover:border-indigo-500/50 transition-all"
+                      whileHover={{ x: -10, boxShadow: '0 20px 60px rgba(79, 70, 229, 0.2)' }}
+                      className="glass p-8 rounded-xl border border-indigo-500/20 hover:border-indigo-500/50 transition-all backdrop-blur-md"
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div>
@@ -143,8 +146,8 @@ export function ExperienceSection() {
                   <>
                     <div className="hidden md:block" />
                     <motion.div
-                      whileHover={{ x: 10 }}
-                      className="glass p-8 rounded-xl hover:border-indigo-500/50 transition-all"
+                      whileHover={{ x: 10, boxShadow: '0 20px 60px rgba(139, 92, 246, 0.2)' }}
+                      className="glass p-8 rounded-xl border border-violet-500/20 hover:border-violet-500/50 transition-all backdrop-blur-md"
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div>

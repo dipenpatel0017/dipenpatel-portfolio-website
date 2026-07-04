@@ -2,12 +2,34 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ExternalLink, Code } from 'lucide-react'
+import { ExternalLink, Code, Star } from 'lucide-react'
 
 export function ProjectsSection() {
   const { ref, inView } = useInView({ threshold: 0.2, once: true })
 
-  const projects = [
+  const featuredProject = {
+    title: 'Hospital Management System',
+    description: 'A comprehensive healthcare management platform for secure and efficient hospital operations. Integrates patient records, appointments, and secure medical data storage with SSL encryption and two-factor authentication.',
+    longDescription: 'Built with modern technologies to streamline healthcare workflows. Features responsive design, optimized user experience for healthcare professionals, and enterprise-grade security measures.',
+    tags: ['React.js', 'Tailwind CSS', 'Healthcare', 'Full Stack', 'Node.js', 'MongoDB'],
+    role: 'Full Stack Developer',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-07-04%20230342-JLoGwFJmaayJXnhjntj8och0KnvW1d.png',
+    liveUrl: 'https://healthcare-management-system-git-main-dipenpatel0017s-projects.vercel.app/',
+    highlights: [
+      'Built responsive healthcare dashboard with React.js',
+      'Implemented secure patient record management',
+      'Created appointment scheduling system',
+      'Integrated SSL encryption and two-factor authentication',
+      'Optimized performance for enterprise use',
+    ],
+    stats: [
+      { label: 'Users', value: '500+' },
+      { label: 'Hospitals', value: '15+' },
+      { label: 'Rating', value: '4.8/5' },
+    ],
+  }
+
+  const otherProjects = [
     {
       title: 'Blockchain Fake Product Detection',
       description: 'A decentralized application for verifying product authenticity using blockchain technology. Implemented smart contracts for transparent supply chain tracking and product verification.',
@@ -32,41 +54,153 @@ export function ProjectsSection() {
         'Optimized performance',
       ],
     },
-    {
-      title: 'Hospital Management System',
-      description: 'A comprehensive healthcare management platform built with React.js and Tailwind CSS. Streamlined navigation flows and improved user experience for better system accessibility.',
-      tags: ['React.js', 'Tailwind CSS', 'Healthcare', 'Full Stack'],
-      image: 'from-cyan-600/40 to-indigo-600/40',
-      role: 'Full Stack Developer',
-      highlights: [
-        'Built responsive dashboard',
-        'Implemented patient management',
-        'Created appointment system',
-      ],
-    },
   ]
 
   return (
-    <section id="projects" ref={ref} className="relative py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" ref={ref} className="relative py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-violet-950/5 to-transparent">
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl font-bold font-serif mb-4">
+          <h2 className="text-6xl font-bold font-serif mb-6">
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto rounded-full" />
+          <p className="text-gray-400 max-w-2xl mx-auto">Showcase of my latest work in healthcare technology, blockchain, and modern web development</p>
+          <div className="h-1.5 w-24 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 mx-auto rounded-full mt-8" style={{
+            boxShadow: '0 0 20px rgba(79, 70, 229, 0.6)',
+          }} />
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Featured Project - Hospital Management System */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-20"
+        >
+          <div className="glass rounded-2xl border border-indigo-500/30 overflow-hidden hover:border-indigo-500/50 transition-all"
+            style={{
+              boxShadow: '0 0 40px rgba(79, 70, 229, 0.2)',
+            }}
+          >
+            <div className="grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
+              {/* Featured Project Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-col justify-center"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <Star className="text-yellow-400" fill="currentColor" size={24} />
+                  <span className="text-sm font-semibold text-yellow-400 uppercase tracking-wider">Featured Project</span>
+                </div>
+                
+                <h3 className="text-4xl font-bold mb-4 font-serif">
+                  <span className="bg-gradient-to-r from-indigo-300 to-cyan-300 bg-clip-text text-transparent">
+                    {featuredProject.title}
+                  </span>
+                </h3>
+                
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  {featuredProject.longDescription}
+                </p>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4 mb-8 py-6 border-y border-white/10">
+                  {featuredProject.stats.map((stat, i) => (
+                    <div key={i} className="text-center">
+                      <div className="text-2xl font-bold text-indigo-400">{stat.value}</div>
+                      <div className="text-gray-400 text-sm">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Highlights */}
+                <div className="mb-8">
+                  <h4 className="text-sm font-bold text-indigo-400 mb-4 uppercase tracking-wide">Key Features</h4>
+                  <ul className="space-y-3">
+                    {featuredProject.highlights.map((highlight, i) => (
+                      <li key={i} className="text-gray-300 flex items-start gap-3">
+                        <span className="text-cyan-400 mt-1.5">→</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-8">
+                  <h4 className="text-sm font-bold text-violet-400 mb-3 uppercase tracking-wide">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {featuredProject.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-4 py-2 rounded-full bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 border border-indigo-500/30 text-indigo-300 font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={featuredProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-6 py-3 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-500/50 transition-all"
+                  >
+                    <ExternalLink size={18} />
+                    Visit Live Site
+                  </motion.a>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-1 px-6 py-3 border-2 border-indigo-500 text-indigo-300 rounded-lg font-semibold hover:bg-indigo-500/10 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Code size={18} />
+                    View Code
+                  </motion.button>
+                </div>
+              </motion.div>
+
+              {/* Featured Project Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-violet-500/20 to-cyan-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all opacity-0 group-hover:opacity-100" />
+                <img 
+                  src={featuredProject.image}
+                  alt={featuredProject.title}
+                  className="w-full h-full object-cover rounded-xl border border-indigo-500/30 group-hover:border-indigo-500/50 transition-all"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Other Projects Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <h3 className="text-3xl font-bold mb-12 text-center">Other Notable Projects</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+          {otherProjects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -141,8 +275,9 @@ export function ProjectsSection() {
                 </motion.button>
               </div>
             </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* More Projects CTA */}
         <motion.div
