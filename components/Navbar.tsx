@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,11 +25,11 @@ export function Navbar() {
   }
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'About', id: 'about' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Certifications', id: 'certifications' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Home', id: 'home', href: null },
+    { label: 'About', id: 'about', href: null },
+    { label: 'Featured Projects', id: 'projects', href: '/projects' },
+    { label: 'Certifications', id: 'certifications', href: null },
+    { label: 'Contact', id: 'contact', href: null },
   ]
 
   return (
@@ -54,26 +55,50 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="relative text-gray-300 hover:text-white transition-colors"
-                whileHover="hover"
-                initial="initial"
-              >
-                <span>{item.label}</span>
-                <motion.div
-                  className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-indigo-400 to-cyan-400"
-                  initial={{ width: 0 }}
-                  variants={{
-                    hover: { width: '100%' },
-                    initial: { width: 0 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.button>
-            ))}
+            {navItems.map((item) => {
+              if (item.href) {
+                return (
+                  <Link key={item.id} href={item.href}>
+                    <motion.div
+                      className="relative text-gray-300 hover:text-white transition-colors cursor-pointer"
+                      whileHover="hover"
+                      initial="initial"
+                    >
+                      <span>{item.label}</span>
+                      <motion.div
+                        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-indigo-400 to-cyan-400"
+                        initial={{ width: 0 }}
+                        variants={{
+                          hover: { width: '100%' },
+                          initial: { width: 0 },
+                        }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                  </Link>
+                )
+              }
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="relative text-gray-300 hover:text-white transition-colors"
+                  whileHover="hover"
+                  initial="initial"
+                >
+                  <span>{item.label}</span>
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-indigo-400 to-cyan-400"
+                    initial={{ width: 0 }}
+                    variants={{
+                      hover: { width: '100%' },
+                      initial: { width: 0 },
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,16 +123,30 @@ export function Navbar() {
           className="md:hidden overflow-hidden"
         >
           <div className="pt-4 pb-4 space-y-2">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                whileHover={{ x: 4 }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
+            {navItems.map((item) => {
+              if (item.href) {
+                return (
+                  <Link key={item.id} href={item.href} onClick={() => setIsOpen(false)}>
+                    <motion.div
+                      className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
+                      whileHover={{ x: 4 }}
+                    >
+                      {item.label}
+                    </motion.div>
+                  </Link>
+                )
+              }
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left px-4 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  whileHover={{ x: 4 }}
+                >
+                  {item.label}
+                </motion.button>
+              )
+            })}
           </div>
         </motion.div>
       </div>
