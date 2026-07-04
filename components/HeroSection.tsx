@@ -47,18 +47,31 @@ export function HeroSection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          {/* Profile Image with glow ring */}
+          {/* Profile Image with neon glow ring */}
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, type: 'spring', stiffness: 100 }}
-            className="relative w-32 h-32 mx-auto mb-8"
+            className="relative w-48 h-48 mx-auto mb-8"
           >
-            <div className="relative w-full h-full rounded-full border-2 border-indigo-500 overflow-hidden shadow-2xl shadow-indigo-500/50 animate-pulse">
-              <div className="w-full h-full bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">DP</span>
+            {/* Outer glowing border */}
+            <div 
+              className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-500 p-1"
+              style={{
+                boxShadow: '0 0 60px rgba(79, 70, 229, 0.8), 0 0 100px rgba(6, 182, 212, 0.6), inset 0 0 60px rgba(139, 92, 246, 0.3)',
+              }}
+            >
+              {/* Inner dark container */}
+              <div className="w-full h-full rounded-full bg-[#030712] p-1 overflow-hidden flex items-center justify-center">
+                {/* Profile photo */}
+                <img 
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-07-04%20at%2010.57.26%20PM-3gluv7PznmRMcZOnEGZTG5wK9VwCNV.jpeg"
+                  alt="Dipen Patel"
+                  className="w-full h-full rounded-full object-cover"
+                />
               </div>
             </div>
+            {/* Rotating outer ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
