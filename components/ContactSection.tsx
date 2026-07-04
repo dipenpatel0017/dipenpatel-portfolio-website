@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin, Send, Code, Briefcase, Share2 } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Share2 } from 'lucide-react'
 import { useState } from 'react'
 
 export function ContactSection() {
@@ -40,8 +40,8 @@ export function ContactSection() {
   ]
 
   const socialLinks = [
-    { icon: Code, href: 'https://github.com/dipenpatel0017', label: 'GitHub' },
-    { icon: Briefcase, href: 'https://linkedin.com/in/dipen-patel-69520026a', label: 'LinkedIn' },
+    { icon: Mail, href: 'https://github.com/dipenpatel0017', label: 'GitHub' },
+    { icon: Phone, href: 'https://linkedin.com/in/dipen-patel-69520026a', label: 'LinkedIn' },
     { icon: Share2, href: '#', label: 'Share' },
   ]
 
