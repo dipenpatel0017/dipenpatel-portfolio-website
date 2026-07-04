@@ -13,7 +13,7 @@ export function ProjectsSection() {
     longDescription: 'Built with modern technologies to streamline healthcare workflows. Features responsive design, optimized user experience for healthcare professionals, and enterprise-grade security measures.',
     tags: ['React.js', 'Tailwind CSS', 'Healthcare', 'Full Stack', 'Node.js', 'MongoDB'],
     role: 'Full Stack Developer',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-07-04%20230342-JLoGwFJmaayJXnhjntj8och0KnvW1d.png',
+    image: '/hospital-management-system.png',
     liveUrl: 'https://healthcare-management-system-git-main-dipenpatel0017s-projects.vercel.app/',
     highlights: [
       'Built responsive healthcare dashboard with React.js',
@@ -21,11 +21,6 @@ export function ProjectsSection() {
       'Created appointment scheduling system',
       'Integrated SSL encryption and two-factor authentication',
       'Optimized performance for enterprise use',
-    ],
-    stats: [
-      { label: 'Users', value: '500+' },
-      { label: 'Hospitals', value: '15+' },
-      { label: 'Rating', value: '4.8/5' },
     ],
   }
 
@@ -108,19 +103,9 @@ export function ProjectsSection() {
                   </span>
                 </h3>
                 
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
                   {featuredProject.longDescription}
                 </p>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-8 py-6 border-y border-white/10">
-                  {featuredProject.stats.map((stat, i) => (
-                    <div key={i} className="text-center">
-                      <div className="text-2xl font-bold text-indigo-400">{stat.value}</div>
-                      <div className="text-gray-400 text-sm">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
 
                 {/* Highlights */}
                 <div className="mb-8">
@@ -179,14 +164,16 @@ export function ProjectsSection() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative group"
+                className="relative group flex items-center justify-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 via-violet-500/20 to-cyan-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all opacity-0 group-hover:opacity-100" />
-                <img 
-                  src={featuredProject.image}
-                  alt={featuredProject.title}
-                  className="w-full h-full object-cover rounded-xl border border-indigo-500/30 group-hover:border-indigo-500/50 transition-all"
-                />
+                <div className="w-full h-96 rounded-xl border border-indigo-500/30 group-hover:border-indigo-500/50 transition-all overflow-hidden bg-gradient-to-br from-blue-900/30 to-indigo-900/30">
+                  <img 
+                    src={featuredProject.image}
+                    alt={featuredProject.title}
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </motion.div>
             </div>
           </div>
