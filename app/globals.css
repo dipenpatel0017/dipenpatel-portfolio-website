@@ -49,6 +49,19 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-hover {
+    @apply glass transition-all duration-300 hover:bg-opacity-70 hover:border-opacity-30;
+  }
+}
+
 :root {
   color-scheme: dark;
   --background: #030712;
@@ -127,55 +140,44 @@
   body {
     @apply bg-background text-foreground;
   }
-}
 
-/* Premium Portfolio Animations */
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
-}
+  /* Premium Portfolio Animations */
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-@keyframes cursor-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.8); }
-  50% { box-shadow: 0 0 40px rgba(79, 70, 229, 1); }
-}
+  @keyframes cursor-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.8); }
+    50% { box-shadow: 0 0 40px rgba(79, 70, 229, 1); }
+  }
 
-.glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
-}
+  .glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
 
-.float {
-  animation: float 6s ease-in-out infinite;
-}
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
 
-.gradient-shift {
-  animation: gradient-shift 8s ease infinite;
-  background-size: 200% 200%;
-}
+  .gradient-shift {
+    animation: gradient-shift 8s ease infinite;
+    background-size: 200% 200%;
+  }
 
-/* Glassmorphism */
-.glass {
-  background: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-hover {
-  @apply glass transition-all duration-300 hover:bg-opacity-70 hover:border-opacity-30;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
