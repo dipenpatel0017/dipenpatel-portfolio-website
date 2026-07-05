@@ -49,16 +49,15 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@layer utilities {
+@layer components {
   /* Glassmorphism */
   .glass {
+    @apply backdrop-blur-md border border-white/10;
     background: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .glass-hover {
-    @apply glass transition-all duration-300 hover:bg-opacity-70 hover:border-opacity-30;
+    @apply glass transition-all duration-300 hover:border-white/30;
   }
 }
 
